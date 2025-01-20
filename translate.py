@@ -40,14 +40,13 @@ def tao_sub(text):
     translation = response.choices[0].message.content
     return translation
 
-def translated_sub(file_sub,pj_folder,output_file):
+def translated_sub(file_sub,pj_folder):
     
     #Tạo folder và đường dẫn
     if not os.path.exists(pj_folder):
         os.makedirs(pj_folder)
     input_path = os.path.join("input", file_sub)
-    if output_file == "":
-        output_file = pj_folder + "_translated.srt"
+    output_file = pj_folder + "_translated.srt"
     output_path = os.path.join(pj_folder, output_file)
     
     # Đọc phụ đề gốc 

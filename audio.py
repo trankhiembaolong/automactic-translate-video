@@ -185,11 +185,12 @@ async def create_audio(subtitle_file, output_folder, combined_output):
     combine_audio(subtitles, output_folder, combined_output)
 
 # Chạy chương trình
-def export_audio(input_file, pj_folder, output_audio):
+def export_audio(input_file, pj_folder):
     # Đường dẫn đầu vào và đầu ra
-    subtitle_file = Path(input_file)
+    subtitle_file = pj_folder / Path(input_file)
     output_folder = Path(pj_folder)
-    combined_output = Path(output_audio) if output_audio else output_folder / pj+".mp3"
+    output_audio = pj_folder + ".mp3"
+    combined_output = pj_folder / Path(output_audio)
 
     # Chạy bất đồng bộ
     asyncio.run(create_audio(subtitle_file, output_folder, combined_output))
